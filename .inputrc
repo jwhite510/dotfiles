@@ -1,0 +1,7 @@
+# set editing-mode vi
+";\"":"\"\ei""
+";(":")\ei("
+";[":"]\ei["
+";t":" | tail -n5"
+";h":" | head -n5"
+set completion-ignore-case On

@@ -1,0 +1,17 @@
+-- native lsp setup
+vim.cmd('source ~/.vimrc')
+-- require'lspconfig'.clangd.setup{
+--   on_attach = function()
+--     vim.keymap.set("n", "gD", vim.lsp.buf.definition)
+--     vim.keymap.set("n", "gT", vim.lsp.buf.type_definition)
+--     vim.keymap.set("n", "gI", vim.lsp.buf.implementation)
+--   end,
+-- } --connect to a server
+-- require'lspconfig'.rls.setup{
+--   on_attach = function()
+--     vim.keymap.set("n", "gD", vim.lsp.buf.definition)
+--     vim.keymap.set("n", "gT", vim.lsp.buf.type_definition)
+--     vim.keymap.set("n", "gI", vim.lsp.buf.implementation)
+--   end,
+-- } --connect to a server
+-- require('gitsigns').setup()

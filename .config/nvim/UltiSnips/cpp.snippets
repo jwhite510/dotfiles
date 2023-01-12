@@ -1,0 +1,44 @@
+snippet co
+$1 ($2) {
+	$0
+}
+endsnippet
+snippet if
+if ($1) {
+	$0
+}
+endsnippet
+snippet for
+for (int $1=0; $1 < $2; $1++) {
+	$0
+}
+endsnippet
+snippet def
+$1 ($2)
+{
+	$0
+}
+endsnippet
+# print with label
+snippet pv
+cout << "${VISUAL}$1 => " << ${VISUAL}$1 << endl;
+endsnippet
+
+snippet p
+cout << "${VISUAL}$1" << endl;
+endsnippet
+
+snippet alg
+#include<iostream>
+#include<vector>
+#include<map>
+#include<climits>
+#include<algorithm>
+#include<set>
+using namespace std;
+
+int main()
+{
+	$0
+}
+endsnippet
