@@ -1318,9 +1318,14 @@ highlight ExtraCursor                  ctermbg=15        ctermfg=16
 hi        TermCursorNC                 ctermfg=47        ctermbg=47   cterm=NONE
 hi        Cursor                       ctermfg=235       ctermbg=231  cterm=NONE
 hi        Visual                       ctermfg=NONE      ctermbg=59   cterm=NONE
-hi        CursorLine                   ctermfg=NONE      ctermbg=16   cterm=NONE
-hi        CursorColumn                 ctermfg=NONE      ctermbg=16   cterm=NONE
+hi        CursorLine                   ctermfg=NONE      ctermbg=98   cterm=NONE
+hi        CursorColumn                 ctermfg=NONE      ctermbg=98   cterm=NONE
 hi        ColorColumn                  ctermfg=NONE      ctermbg=237  cterm=NONE
+" tab line
+hi        TabLineFill                  ctermfg=NONE      ctermbg=NONE cterm=NONE
+hi        TabLine                      ctermfg=NONE      ctermbg=16   cterm=NONE
+hi        TabLineSel                   ctermfg=NONE      ctermbg=98   cterm=NONE
+hi        Title                        ctermfg=83        ctermbg=NONE cterm=NONE
 " line number
 hi        LineNr                       ctermfg=83        ctermbg=NONE cterm=NONE
 " vertical split
