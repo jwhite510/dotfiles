@@ -18,6 +18,12 @@ Plug 'mbbill/undotree'
 " vim surround
 Plug 'tpope/vim-surround'
 
+Plug 'junegunn/vim-easy-align'
+xmap ga <Plug>(EasyAlign)
+
+Plug 'vim-airline/vim-airline-themes'
+let g:airline_theme='kolor'
+
 " Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim'}
 Plug 'vim-airline/vim-airline'
 " let g:airline_section_a = ''
@@ -1318,8 +1324,8 @@ highlight ExtraCursor                  ctermbg=15        ctermfg=16
 hi        TermCursorNC                 ctermfg=47        ctermbg=47   cterm=NONE
 hi        Cursor                       ctermfg=235       ctermbg=231  cterm=NONE
 hi        Visual                       ctermfg=NONE      ctermbg=59   cterm=NONE
-hi        CursorLine                   ctermfg=NONE      ctermbg=98   cterm=NONE
-hi        CursorColumn                 ctermfg=NONE      ctermbg=98   cterm=NONE
+hi        CursorLine                   ctermfg=NONE      ctermbg=16   cterm=NONE
+hi        CursorColumn                 ctermfg=NONE      ctermbg=16   cterm=NONE
 hi        ColorColumn                  ctermfg=NONE      ctermbg=237  cterm=NONE
 " tab line
 hi        TabLineFill                  ctermfg=NONE      ctermbg=NONE cterm=NONE
