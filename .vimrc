@@ -1314,122 +1314,122 @@ highlight CtrlP_Preview9 ctermbg=11 ctermfg=16
 match ExtraWhitespace / \+$/
 
 
-highlight ExtraCursor ctermbg=15 ctermfg=16
-hi TermCursorNC ctermfg=47 ctermbg=47 cterm=NONE
-hi Cursor ctermfg=235 ctermbg=231 cterm=NONE
-hi Visual ctermfg=NONE ctermbg=59 cterm=NONE
-hi CursorLine ctermfg=NONE ctermbg=236 cterm=NONE
-hi CursorColumn ctermfg=NONE ctermbg=237 cterm=NONE
-hi ColorColumn ctermfg=NONE ctermbg=237 cterm=NONE
+highlight ExtraCursor                  ctermbg=15        ctermfg=16
+hi        TermCursorNC                 ctermfg=47        ctermbg=47   cterm=NONE
+hi        Cursor                       ctermfg=235       ctermbg=231  cterm=NONE
+hi        Visual                       ctermfg=NONE      ctermbg=59   cterm=NONE
+hi        CursorLine                   ctermfg=NONE      ctermbg=236  cterm=NONE
+hi        CursorColumn                 ctermfg=NONE      ctermbg=237  cterm=NONE
+hi        ColorColumn                  ctermfg=NONE      ctermbg=237  cterm=NONE
 " line number
-hi LineNr ctermfg=255 ctermbg=NONE cterm=NONE
+hi        LineNr                       ctermfg=255       ctermbg=NONE cterm=NONE
 " vertical split
-hi VertSplit ctermfg=241 ctermbg=16 cterm=NONE
+hi        VertSplit                    ctermfg=241       ctermbg=16   cterm=NONE
 " matching parenthesiis
-hi MatchParen ctermfg=197 ctermbg=NONE cterm=underline
-hi StatusLine ctermfg=231 ctermbg=241 cterm=bold
-hi StatusLineNC ctermfg=231 ctermbg=241 cterm=NONE
-hi Pmenu ctermfg=NONE ctermbg=NONE cterm=NONE
-hi PmenuSel ctermfg=NONE ctermbg=59 cterm=NONE
-hi IncSearch ctermfg=235 ctermbg=186 cterm=NONE
+hi        MatchParen                   ctermfg=197       ctermbg=NONE cterm=underline
+hi        StatusLine                   ctermfg=231       ctermbg=241  cterm=bold
+hi        StatusLineNC                 ctermfg=231       ctermbg=241  cterm=NONE
+hi        Pmenu                        ctermfg=NONE      ctermbg=NONE cterm=NONE
+hi        PmenuSel                     ctermfg=NONE      ctermbg=59   cterm=NONE
+hi        IncSearch                    ctermfg=235       ctermbg=186  cterm=NONE
 " highlight color
-hi Search ctermfg=NONE ctermbg=16 cterm=inverse
-hi Directory ctermfg=141 ctermbg=NONE cterm=NONE
-hi Folded ctermfg=242 ctermbg=NONE cterm=NONE
+hi        Search                       ctermfg=NONE      ctermbg=16   cterm=inverse
+hi        Directory                    ctermfg=141       ctermbg=NONE cterm=NONE
+hi        Folded                       ctermfg=242       ctermbg=NONE cterm=NONE
 " column in vertical split
-hi SignColumn ctermfg=NONE ctermbg=NONE cterm=NONE
+hi        SignColumn                   ctermfg=NONE      ctermbg=NONE cterm=NONE
 " normal text
-hi Normal ctermfg=195 ctermbg=NONE cterm=NONE
-hi Boolean ctermfg=141 ctermbg=NONE cterm=NONE
-hi Character ctermfg=141 ctermbg=NONE cterm=NONE
-hi Comment ctermfg=lightblue ctermbg=NONE cterm=NONE
-hi Conditional ctermfg=226 ctermbg=NONE cterm=NONE
-hi Constant ctermfg=NONE ctermbg=NONE cterm=NONE
-hi Define ctermfg=197 ctermbg=NONE cterm=NONE
+hi        Normal                       ctermfg=195       ctermbg=NONE cterm=NONE
+hi        Boolean                      ctermfg=141       ctermbg=NONE cterm=NONE
+hi        Character                    ctermfg=141       ctermbg=NONE cterm=NONE
+hi        Comment                      ctermfg=lightblue ctermbg=NONE cterm=NONE
+hi        Conditional                  ctermfg=226       ctermbg=NONE cterm=NONE
+hi        Constant                     ctermfg=NONE      ctermbg=NONE cterm=NONE
+hi        Define                       ctermfg=197       ctermbg=NONE cterm=NONE
 
-hi DiffAdd ctermfg=NONE ctermbg=22 cterm=NONE
-hi DiffDelete ctermfg=57 ctermbg=NONE cterm=NONE
-hi DiffChange ctermfg=NONE ctermbg=NONE cterm=NONE
-hi DiffText ctermfg=NONE ctermbg=18 cterm=NONE
+hi        DiffAdd                      ctermfg=NONE      ctermbg=22   cterm=NONE
+hi        DiffDelete                   ctermfg=57        ctermbg=NONE cterm=NONE
+hi        DiffChange                   ctermfg=NONE      ctermbg=NONE cterm=NONE
+hi        DiffText                     ctermfg=NONE      ctermbg=18   cterm=NONE
 
-hi ErrorMsg ctermfg=231 ctermbg=197 cterm=NONE
-hi WarningMsg ctermfg=231 ctermbg=197 cterm=NONE
-hi Float ctermfg=141 ctermbg=NONE cterm=NONE
-hi Function ctermfg=40 ctermbg=NONE cterm=NONE
-hi Identifier ctermfg=81 ctermbg=NONE cterm=NONE
-hi Keyword ctermfg=197 ctermbg=NONE cterm=NONE
-hi Label ctermfg=186 ctermbg=NONE cterm=NONE
+hi        ErrorMsg                     ctermfg=231       ctermbg=197  cterm=NONE
+hi        WarningMsg                   ctermfg=231       ctermbg=197  cterm=NONE
+hi        Float                        ctermfg=141       ctermbg=NONE cterm=NONE
+hi        Function                     ctermfg=40        ctermbg=NONE cterm=NONE
+hi        Identifier                   ctermfg=81        ctermbg=NONE cterm=NONE
+hi        Keyword                      ctermfg=197       ctermbg=NONE cterm=NONE
+hi        Label                        ctermfg=186       ctermbg=NONE cterm=NONE
 " the area after the last line
-hi NonText ctermfg=21 ctermbg=NONE cterm=NONE
-hi Number ctermfg=141 ctermbg=NONE cterm=NONE
-hi Operator ctermfg=197 ctermbg=NONE cterm=NONE
+hi        NonText                      ctermfg=21        ctermbg=NONE cterm=NONE
+hi        Number                       ctermfg=141       ctermbg=NONE cterm=NONE
+hi        Operator                     ctermfg=197       ctermbg=NONE cterm=NONE
 " python imports PreProc
-hi PreProc ctermfg=225 ctermbg=NONE cterm=NONE
-hi Special ctermfg=231 ctermbg=NONE cterm=NONE
-hi SpecialComment ctermfg=242 ctermbg=NONE cterm=NONE
-hi SpecialKey ctermfg=59 ctermbg=237 cterm=NONE
+hi        PreProc                      ctermfg=225       ctermbg=NONE cterm=NONE
+hi        Special                      ctermfg=231       ctermbg=NONE cterm=NONE
+hi        SpecialComment               ctermfg=242       ctermbg=NONE cterm=NONE
+hi        SpecialKey                   ctermfg=59        ctermbg=237  cterm=NONE
 " classes and function definitions
-hi Statement ctermfg=141 ctermbg=NONE cterm=NONE
-hi StorageClass ctermfg=81 ctermbg=NONE cterm=NONE
+hi        Statement                    ctermfg=141       ctermbg=NONE cterm=NONE
+hi        StorageClass                 ctermfg=81        ctermbg=NONE cterm=NONE
 " color of string
-hi String ctermfg=129 ctermbg=NONE cterm=NONE
-hi Tag ctermfg=255 ctermbg=NONE cterm=NONE
-hi Title ctermfg=231 ctermbg=NONE cterm=bold
-hi Todo ctermfg=95 ctermbg=NONE cterm=inverse,bold
+hi        String                       ctermfg=129       ctermbg=NONE cterm=NONE
+hi        Tag                          ctermfg=255       ctermbg=NONE cterm=NONE
+hi        Title                        ctermfg=231       ctermbg=NONE cterm=bold
+hi        Todo                         ctermfg=95        ctermbg=NONE cterm=inverse,bold
 " a lot of things are this color especially in vimrc
-hi Type ctermfg=117 ctermbg=NONE cterm=NONE
-hi Underlined ctermfg=NONE ctermbg=NONE cterm=underline
-hi rubyClass ctermfg=197 ctermbg=NONE cterm=NONE
-hi rubyFunction ctermfg=148 ctermbg=NONE cterm=NONE
-hi rubyInterpolationDelimiter ctermfg=NONE ctermbg=NONE cterm=NONE
-hi rubySymbol ctermfg=141 ctermbg=NONE cterm=NONE
-hi rubyConstant ctermfg=81 ctermbg=NONE cterm=NONE
-hi rubyStringDelimiter ctermfg=186 ctermbg=NONE cterm=NONE
-hi rubyBlockParameter ctermfg=208 ctermbg=NONE cterm=NONE
-hi rubyInstanceVariable ctermfg=NONE ctermbg=NONE cterm=NONE
-hi rubyInclude ctermfg=197 ctermbg=NONE cterm=NONE
-hi rubyGlobalVariable ctermfg=NONE ctermbg=NONE cterm=NONE
-hi rubyRegexp ctermfg=186 ctermbg=NONE cterm=NONE
-hi rubyRegexpDelimiter ctermfg=186 ctermbg=NONE cterm=NONE
-hi rubyEscape ctermfg=141 ctermbg=NONE cterm=NONE
-hi rubyControl ctermfg=197 ctermbg=NONE cterm=NONE
-hi rubyClassVariable ctermfg=NONE ctermbg=NONE cterm=NONE
-hi rubyOperator ctermfg=197 ctermbg=NONE cterm=NONE
-hi rubyException ctermfg=197 ctermbg=NONE cterm=NONE
-hi rubyPseudoVariable ctermfg=NONE ctermbg=NONE cterm=NONE
-hi rubyRailsUserClass ctermfg=81 ctermbg=NONE cterm=NONE
-hi rubyRailsARAssociationMethod ctermfg=81 ctermbg=NONE cterm=NONE
-hi rubyRailsARMethod ctermfg=81 ctermbg=NONE cterm=NONE
-hi rubyRailsRenderMethod ctermfg=81 ctermbg=NONE cterm=NONE
-hi rubyRailsMethod ctermfg=81 ctermbg=NONE cterm=NONE
-hi erubyDelimiter ctermfg=NONE ctermbg=NONE cterm=NONE
-hi erubyComment ctermfg=95 ctermbg=NONE cterm=NONE
-hi erubyRailsMethod ctermfg=81 ctermbg=NONE cterm=NONE
-hi htmlTag ctermfg=148 ctermbg=NONE cterm=NONE
-hi htmlEndTag ctermfg=148 ctermbg=NONE cterm=NONE
-hi htmlTagName ctermfg=NONE ctermbg=NONE cterm=NONE
-hi htmlArg ctermfg=NONE ctermbg=NONE cterm=NONE
-hi htmlSpecialChar ctermfg=141 ctermbg=NONE cterm=NONE
-hi javaScriptFunction ctermfg=81 ctermbg=NONE cterm=NONE
-hi javaScriptRailsFunction ctermfg=81 ctermbg=NONE cterm=NONE
-hi javaScriptBraces ctermfg=NONE ctermbg=NONE cterm=NONE
-hi yamlKey ctermfg=197 ctermbg=NONE cterm=NONE
-hi yamlAnchor ctermfg=NONE ctermbg=NONE cterm=NONE
-hi yamlAlias ctermfg=NONE ctermbg=NONE cterm=NONE
-hi yamlDocumentHeader ctermfg=186 ctermbg=NONE cterm=NONE
-hi cssURL ctermfg=208 ctermbg=NONE cterm=NONE
-hi cssFunctionName ctermfg=81 ctermbg=NONE cterm=NONE
-hi cssColor ctermfg=141 ctermbg=NONE cterm=NONE
-hi cssPseudoClassId ctermfg=148 ctermbg=NONE cterm=NONE
-hi cssClassName ctermfg=148 ctermbg=NONE cterm=NONE
-hi cssValueLength ctermfg=141 ctermbg=NONE cterm=NONE
-hi cssCommonAttr ctermfg=81 ctermbg=NONE cterm=NONE
-hi cssBraces ctermfg=NONE ctermbg=NONE cterm=NONE
+hi        Type                         ctermfg=117       ctermbg=NONE cterm=NONE
+hi        Underlined                   ctermfg=NONE      ctermbg=NONE cterm=underline
+hi        rubyClass                    ctermfg=197       ctermbg=NONE cterm=NONE
+hi        rubyFunction                 ctermfg=148       ctermbg=NONE cterm=NONE
+hi        rubyInterpolationDelimiter   ctermfg=NONE      ctermbg=NONE cterm=NONE
+hi        rubySymbol                   ctermfg=141       ctermbg=NONE cterm=NONE
+hi        rubyConstant                 ctermfg=81        ctermbg=NONE cterm=NONE
+hi        rubyStringDelimiter          ctermfg=186       ctermbg=NONE cterm=NONE
+hi        rubyBlockParameter           ctermfg=208       ctermbg=NONE cterm=NONE
+hi        rubyInstanceVariable         ctermfg=NONE      ctermbg=NONE cterm=NONE
+hi        rubyInclude                  ctermfg=197       ctermbg=NONE cterm=NONE
+hi        rubyGlobalVariable           ctermfg=NONE      ctermbg=NONE cterm=NONE
+hi        rubyRegexp                   ctermfg=186       ctermbg=NONE cterm=NONE
+hi        rubyRegexpDelimiter          ctermfg=186       ctermbg=NONE cterm=NONE
+hi        rubyEscape                   ctermfg=141       ctermbg=NONE cterm=NONE
+hi        rubyControl                  ctermfg=197       ctermbg=NONE cterm=NONE
+hi        rubyClassVariable            ctermfg=NONE      ctermbg=NONE cterm=NONE
+hi        rubyOperator                 ctermfg=197       ctermbg=NONE cterm=NONE
+hi        rubyException                ctermfg=197       ctermbg=NONE cterm=NONE
+hi        rubyPseudoVariable           ctermfg=NONE      ctermbg=NONE cterm=NONE
+hi        rubyRailsUserClass           ctermfg=81        ctermbg=NONE cterm=NONE
+hi        rubyRailsARAssociationMethod ctermfg=81        ctermbg=NONE cterm=NONE
+hi        rubyRailsARMethod            ctermfg=81        ctermbg=NONE cterm=NONE
+hi        rubyRailsRenderMethod        ctermfg=81        ctermbg=NONE cterm=NONE
+hi        rubyRailsMethod              ctermfg=81        ctermbg=NONE cterm=NONE
+hi        erubyDelimiter               ctermfg=NONE      ctermbg=NONE cterm=NONE
+hi        erubyComment                 ctermfg=95        ctermbg=NONE cterm=NONE
+hi        erubyRailsMethod             ctermfg=81        ctermbg=NONE cterm=NONE
+hi        htmlTag                      ctermfg=148       ctermbg=NONE cterm=NONE
+hi        htmlEndTag                   ctermfg=148       ctermbg=NONE cterm=NONE
+hi        htmlTagName                  ctermfg=NONE      ctermbg=NONE cterm=NONE
+hi        htmlArg                      ctermfg=NONE      ctermbg=NONE cterm=NONE
+hi        htmlSpecialChar              ctermfg=141       ctermbg=NONE cterm=NONE
+hi        javaScriptFunction           ctermfg=81        ctermbg=NONE cterm=NONE
+hi        javaScriptRailsFunction      ctermfg=81        ctermbg=NONE cterm=NONE
+hi        javaScriptBraces             ctermfg=NONE      ctermbg=NONE cterm=NONE
+hi        yamlKey                      ctermfg=197       ctermbg=NONE cterm=NONE
+hi        yamlAnchor                   ctermfg=NONE      ctermbg=NONE cterm=NONE
+hi        yamlAlias                    ctermfg=NONE      ctermbg=NONE cterm=NONE
+hi        yamlDocumentHeader           ctermfg=186       ctermbg=NONE cterm=NONE
+hi        cssURL                       ctermfg=208       ctermbg=NONE cterm=NONE
+hi        cssFunctionName              ctermfg=81        ctermbg=NONE cterm=NONE
+hi        cssColor                     ctermfg=141       ctermbg=NONE cterm=NONE
+hi        cssPseudoClassId             ctermfg=148       ctermbg=NONE cterm=NONE
+hi        cssClassName                 ctermfg=148       ctermbg=NONE cterm=NONE
+hi        cssValueLength               ctermfg=141       ctermbg=NONE cterm=NONE
+hi        cssCommonAttr                ctermfg=81        ctermbg=NONE cterm=NONE
+hi        cssBraces                    ctermfg=NONE      ctermbg=NONE cterm=NONE
 
-hi GitGutterAdd ctermfg=48
-hi GitGutterChange ctermfg=14
-hi GitGutterDelete ctermfg=1
-hi GitGutterChangeDelete ctermfg=4
+hi        GitGutterAdd                 ctermfg=48
+hi        GitGutterChange              ctermfg=14
+hi        GitGutterDelete              ctermfg=1
+hi        GitGutterChangeDelete        ctermfg=4
 
 let mapleader=" "
 
