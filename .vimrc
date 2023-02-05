@@ -1318,13 +1318,13 @@ highlight ExtraCursor                  ctermbg=15        ctermfg=16
 hi        TermCursorNC                 ctermfg=47        ctermbg=47   cterm=NONE
 hi        Cursor                       ctermfg=235       ctermbg=231  cterm=NONE
 hi        Visual                       ctermfg=NONE      ctermbg=59   cterm=NONE
-hi        CursorLine                   ctermfg=NONE      ctermbg=236  cterm=NONE
-hi        CursorColumn                 ctermfg=NONE      ctermbg=237  cterm=NONE
+hi        CursorLine                   ctermfg=NONE      ctermbg=16   cterm=NONE
+hi        CursorColumn                 ctermfg=NONE      ctermbg=16   cterm=NONE
 hi        ColorColumn                  ctermfg=NONE      ctermbg=237  cterm=NONE
 " line number
-hi        LineNr                       ctermfg=255       ctermbg=NONE cterm=NONE
+hi        LineNr                       ctermfg=83        ctermbg=NONE cterm=NONE
 " vertical split
-hi        VertSplit                    ctermfg=241       ctermbg=16   cterm=NONE
+hi        VertSplit                    ctermfg=16        ctermbg=16   cterm=NONE
 " matching parenthesiis
 hi        MatchParen                   ctermfg=197       ctermbg=NONE cterm=underline
 hi        StatusLine                   ctermfg=231       ctermbg=241  cterm=bold
