@@ -11,7 +11,7 @@ Plug 'neovim/nvim-lspconfig'
 
 Plug 'jaxbot/semantic-highlight.vim'
 " semantic highlighting
-let g:semanticTermColors = [1, 2, 3, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15]
+let g:semanticTermColors = [ 1, 2, 3, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 48, 40, 205, 213, 51, 214, 199, 189 ]
 
 Plug 'mbbill/undotree'
 
@@ -1324,8 +1324,8 @@ highlight ExtraCursor                  ctermbg=15        ctermfg=16
 hi        TermCursorNC                 ctermfg=47        ctermbg=47   cterm=NONE
 hi        Cursor                       ctermfg=235       ctermbg=231  cterm=NONE
 hi        Visual                       ctermfg=NONE      ctermbg=59   cterm=NONE
-hi        CursorLine                   ctermfg=NONE      ctermbg=16   cterm=NONE
-hi        CursorColumn                 ctermfg=NONE      ctermbg=16   cterm=NONE
+hi        CursorLine                   ctermfg=NONE      ctermbg=239  cterm=NONE
+hi        CursorColumn                 ctermfg=NONE      ctermbg=239  cterm=NONE
 hi        ColorColumn                  ctermfg=NONE      ctermbg=237  cterm=NONE
 " tab line
 hi        TabLineFill                  ctermfg=NONE      ctermbg=NONE cterm=NONE
@@ -1346,14 +1346,17 @@ hi        IncSearch                    ctermfg=235       ctermbg=186  cterm=NONE
 " highlight color
 hi        Search                       ctermfg=NONE      ctermbg=16   cterm=inverse
 hi        Directory                    ctermfg=141       ctermbg=NONE cterm=NONE
-hi        Folded                       ctermfg=242       ctermbg=NONE cterm=NONE
+" folded line
+hi        Folded                       ctermfg=98        ctermbg=NONE cterm=NONE
 " column in vertical split
 hi        SignColumn                   ctermfg=NONE      ctermbg=NONE cterm=NONE
+" the column displayed when diff mode is open
+hi        FoldColumn                   ctermfg=NONE      ctermbg=98   cterm=NONE
 " normal text
 hi        Normal                       ctermfg=195       ctermbg=NONE cterm=NONE
 hi        Boolean                      ctermfg=141       ctermbg=NONE cterm=NONE
 hi        Character                    ctermfg=141       ctermbg=NONE cterm=NONE
-hi        Comment                      ctermfg=lightblue ctermbg=NONE cterm=NONE
+hi        Comment                      ctermfg=48        ctermbg=NONE cterm=NONE
 hi        Conditional                  ctermfg=226       ctermbg=NONE cterm=NONE
 hi        Constant                     ctermfg=NONE      ctermbg=NONE cterm=NONE
 hi        Define                       ctermfg=197       ctermbg=NONE cterm=NONE
@@ -1371,7 +1374,7 @@ hi        Identifier                   ctermfg=81        ctermbg=NONE cterm=NONE
 hi        Keyword                      ctermfg=197       ctermbg=NONE cterm=NONE
 hi        Label                        ctermfg=186       ctermbg=NONE cterm=NONE
 " the area after the last line
-hi        NonText                      ctermfg=21        ctermbg=NONE cterm=NONE
+hi        NonText                      ctermfg=98        ctermbg=NONE cterm=NONE
 hi        Number                       ctermfg=141       ctermbg=NONE cterm=NONE
 hi        Operator                     ctermfg=197       ctermbg=NONE cterm=NONE
 " python imports PreProc
@@ -1449,6 +1452,7 @@ function! NERDTreeYankCurrentNode()
     let n = g:NERDTreeFileNode.GetSelected()
     if n != {}
         call setreg('"', n.path.str())
+        call setreg('+', n.path.str())
     endif
 endfunction
 autocmd VimEnter * call NERDTreeAddKeyMap({
