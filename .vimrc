@@ -59,6 +59,9 @@ Plug 'tpope/vim-dispatch'
 " Plug 'dense-analysis/ale'
 "
 Plug 'preservim/nerdtree'
+" if the file is open in another tab, don't go to it, open it in the current
+" tab
+let g:NERDTreeCustomOpenArgs = {'file': {'reuse': 'currenttab', 'where': 'p', 'keepopen': 1}, 'dir': {}}
 
 " Plug 'jwhite510/nvim_win_tabs'
 
@@ -100,7 +103,7 @@ let g:fzf_layout = { 'down': '~25%' }
 
 Plug 'rking/ag.vim'
 
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 
 Plug 'zonzon510/zgdb'
 
@@ -463,7 +466,13 @@ endfun
 fun! OpenTerm()
 	let current_dir = expand("%:p:h")
 	:execute ":term"
-	call feedkeys("acd \"".current_dir."\"\<CR>")
+
+	if has('win32')
+		call feedkeys("apowershell.exe \<CR>")
+		call feedkeys("cd \"".current_dir."\"\<CR>")
+	else
+		call feedkeys("acd \"".current_dir."\"\<CR>")
+	endif
 	call feedkeys("clear"."\<CR>")
 endfun
 fun! OpenTermTop()
@@ -1324,8 +1333,10 @@ highlight ExtraCursor                  ctermbg=15        ctermfg=16
 hi        TermCursorNC                 ctermfg=47        ctermbg=47   cterm=NONE
 hi        Cursor                       ctermfg=235       ctermbg=231  cterm=NONE
 hi        Visual                       ctermfg=NONE      ctermbg=59   cterm=NONE
-hi        CursorLine                   ctermfg=NONE      ctermbg=239  cterm=NONE
-hi        CursorColumn                 ctermfg=NONE      ctermbg=239  cterm=NONE
+" hi        CursorLine                   ctermfg=NONE      ctermbg=239  cterm=NONE
+" hi        CursorColumn                 ctermfg=NONE      ctermbg=239  cterm=NONE
+hi        CursorLine                   ctermfg=NONE      ctermbg=235  cterm=NONE
+hi        CursorColumn                 ctermfg=NONE      ctermbg=235  cterm=NONE
 hi        ColorColumn                  ctermfg=NONE      ctermbg=237  cterm=NONE
 " tab line
 hi        TabLineFill                  ctermfg=NONE      ctermbg=NONE cterm=NONE
@@ -1335,7 +1346,7 @@ hi        Title                        ctermfg=83        ctermbg=NONE cterm=NONE
 " line number
 hi        LineNr                       ctermfg=83        ctermbg=NONE cterm=NONE
 " vertical split
-hi        VertSplit                    ctermfg=16        ctermbg=16   cterm=NONE
+hi        VertSplit                    ctermfg=235       ctermbg=235  cterm=NONE
 " matching parenthesiis
 hi        MatchParen                   ctermfg=197       ctermbg=NONE cterm=underline
 hi        StatusLine                   ctermfg=231       ctermbg=241  cterm=bold
@@ -1353,6 +1364,7 @@ hi        SignColumn                   ctermfg=NONE      ctermbg=NONE cterm=NONE
 " the column displayed when diff mode is open
 hi        FoldColumn                   ctermfg=NONE      ctermbg=98   cterm=NONE
 " normal text
+hi        Normal                       ctermfg=195       ctermbg=16 cterm=NONE
 hi        Normal                       ctermfg=195       ctermbg=NONE cterm=NONE
 hi        Boolean                      ctermfg=141       ctermbg=NONE cterm=NONE
 hi        Character                    ctermfg=141       ctermbg=NONE cterm=NONE
@@ -1666,9 +1678,9 @@ nnoremap <C-w><C-o> nop
 nnoremap <C-w>o nop
 
 " yank full path
-nnoremap <leader>yp :let @"=expand("%:p")<CR>
+nnoremap <leader>yp :let @"=expand("%:p")<CR>:let @+=expand("%:p")<CR>
 " yank file name
-nnoremap <leader>yf :let @"=expand("%:t")<CR>
+nnoremap <leader>yf :let @"=expand("%:t")<CR>:let @+=expand("%:t")<CR>
 nnoremap <leader>ye yg_
 " yank file name and line number
 nnoremap <leader>yn :let @"=expand("%:p").":".getpos('.')[1]<CR>
@@ -1697,6 +1709,8 @@ nnoremap <leader>lr :call RemoveFromLocationList()<cr>:call LLSigns()<cr>
 nnoremap <leader>lt :ltag <c-r>=expand("<cword>")<CR> \| 3lopen<CR>
 nnoremap ]w :lnext <CR>zv
 nnoremap [w :lprevious <CR>zv
+" set the location list of the current window to the current quickfix list
+nnoremap <leader>ql :call setloclist(winnr(), getqflist(), 'r')<CR>
 " nnoremap <leader>ww :ll <CR>zv
 
 nnoremap <leader>pf :echo expand("%")<cr>
@@ -1716,6 +1730,8 @@ nnoremap <leader>cm yy:<c-r>"
 nmap <c-s> <Plug>(easymotion-overwin-w)
 nmap s <Plug>(easymotion-overwin-f2)
 nnoremap <leader>gl :Git log --date-order --decorate --all --oneline --graph
+" recently used of type specified
+nnoremap <leader>ru :filter /\.*/ ls t<left><left><left><left><left><left>
 
 " # # # # # # # # # # # # # # # # # # # # # # # #
 " #   V I S U A L  M O D E  M A P P I N G S     #
@@ -1787,7 +1803,10 @@ cmap <A-b> <Left>
 cmap <A-w> \<
 cmap <A-e> \>
 " greedy regex nearest match
-cmap <C-s> .\{-}
+" cmap <C-s> .\{-}
+" include newlines
+cmap <C-s> \_.\{-}
+
 cmap <A-C-n> ^.\+\(^.*notmatching.*$\)\@<!$
 
 
