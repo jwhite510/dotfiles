@@ -1493,6 +1493,7 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 " #   N O R M A L  M O D E  M A P P I N G S     #
 " # # # # # # # # # # # # # # # # # # # # # # # #
 
+nnoremap <C-q> @@
 " move up one indentation level
 nmap <c-p> :call UpByIndent()<cr>
 " find
@@ -1678,7 +1679,12 @@ nnoremap <C-w><C-o> nop
 nnoremap <C-w>o nop
 
 " yank full path
-nnoremap <leader>yp :let @"=expand("%:p")<CR>:let @+=expand("%:p")<CR>
+if has('win32')
+	nnoremap <leader>yp :let g:thecurrentfilepath = substitute(expand("%:p"), '/', '\', 'g')<CR>:let @"=g:thecurrentfilepath<CR>:let @+=g:thecurrentfilepath<CR>
+else
+	nnoremap <leader>yp :let @"=expand("%:p")<CR>:let @+=expand("%:p")<CR>
+endif
+
 " yank file name
 nnoremap <leader>yf :let @"=expand("%:t")<CR>:let @+=expand("%:t")<CR>
 nnoremap <leader>ye yg_
@@ -1791,6 +1797,7 @@ inoremap <c-b> <Left>
 
 " insert current file name into command
 cmap <A-F> <C-r>=expand("%:t")<CR>
+cmap <A-t> <Home>TabMessage <End>
 
 " # # # # # # # # # # # # # # # # # # # # # # # # #
 " #   C O M M A N D  M O D E  M A P P I N G S     #
@@ -1932,6 +1939,24 @@ fun! GetQFFromBuffer()
 
 
 endfun
+
+function! TabMessage(cmd)
+  let message = ":".a:cmd."\n"
+  redir =>> message
+  silent execute a:cmd
+  redir END
+  if empty(message)
+    echoerr "no output"
+  else
+    " use "new" instead of "tabnew" below if you prefer split windows instead of tabs
+    tabnew
+    setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted nomodified
+    silent put=message
+    norm gg
+  endif
+endfunction
+
+command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 
 fun! SetRunBuffer()
 	let g:run_buffer_number = bufnr('%')
