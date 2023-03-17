@@ -124,6 +124,50 @@ call plug#end()
 set laststatus=2
 set encoding=utf-8
 
+function FugitiveRefresh()
+	let s:fugitive_cmd_cus = b:fugitive_cmd_cus
+	:exec ":".b:fugitive_cmd_cus
+	" get the buffer number
+	let s:bufnew = bufnr()
+	" go back to the original window
+	:exec "wincmd j"
+	" set it to the new buffer
+	:exec ":b ".s:bufnew
+	" go back to the other window
+	:exec "wincmd k"
+	:exec ":q"
+	" set it to the proper command here
+	" let the autocmd's trigger, then reset the fugitive_cmd_cus
+	call feedkeys(":let b:fugitive_cmd_cus = \"".s:fugitive_cmd_cus."\""."\<CR>")
+endfunction
+
+function FugitiveModify()
+	call feedkeys(":".b:fugitive_cmd_cus)
+endfunction
+
+function FugitiveRefreshInit()
+	if &ft == 'git'
+		nmap <buffer> rr :call FugitiveRefresh()<CR>
+		nmap <buffer> rm :call FugitiveModify()<CR>
+		call feedkeys(":let b:fugitive_cmd_cus = @:"."\<CR>")
+	endif
+endfunction
+
+augroup fugitive_maps
+	autocmd!
+	" autocmd User FugitiveObject nmap <buffer> <leader>n :echo hello
+	" autocmd User FugitiveChanged echo "FugitiveChanged"
+	" autocmd User FugitiveIndex echo "FugitiveIndex"
+	" autocmd User FugitiveObject echo "FugitiveObject"
+	" autocmd User FugitivePager echo "FugitivePager"
+	" autocmd User FugitivePager let b:testv = @:
+	" autocmd User FugitivePager norm! G
+	autocmd User FugitivePager call FugitiveRefreshInit()
+	" refresh fugitive command
+	" autocmd User FugitivePager nmap <buffer> rr :call FugitiveRefresh()<CR>
+	" " modify fugitive command
+	" autocmd User FugitivePager nmap <buffer> rm :call FugitiveModify()<CR>
+augroup END
 " define functions
 function Rand()
     return str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:])
