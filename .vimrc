@@ -1239,19 +1239,37 @@ fun! AutoSave()
 	if bufexists("[Command Line]")
 		return
 	endif
-	" save at a time interval
-	let time_interval = 1 " seconds
-	let autosave_l_curtime = strftime("%s")
-	if !exists("g:autosave_curtime") || (autosave_l_curtime - g:autosave_curtime) > time_interval
-		let g:autosave_curtime = autosave_l_curtime
+	if !has('win32')
+		" save at a time interval
+		let time_interval = 1 " seconds
+		let autosave_l_curtime = strftime("%s")
+		if !exists("g:autosave_curtime") || (autosave_l_curtime - g:autosave_curtime) > time_interval
+			let g:autosave_curtime = autosave_l_curtime
+			let chdir = getcwd()
+			let chdir = substitute(chdir, '/', '-', 'g')
+			if !exists("g:autosave_checked_dir")
+				let g:autosave_checked_dir = system('mkdir -p ~/.nvimsessions')
+			endif
+			let curfilepath = substitute(expand("%:p"), '/', '-', 'g')
+			exec ":silent mksession! ~/.nvimsessions/sess"."".chdir."---".curfilepath.".vim"
+		endif
+	else
+		" in windows:
+		if !exists("g:sessidentifier")
+			let g:sessidentifier = Rand()
+		endif
 		let chdir = getcwd()
 		let chdir = substitute(chdir, '/', '-', 'g')
-		if !exists("g:autosave_checked_dir")
-			let g:autosave_checked_dir = system('mkdir -p ~/.nvimsessions')
-		endif
-		let curfilepath = substitute(expand("%:p"), '/', '-', 'g')
-		exec ":silent mksession! ~/.nvimsessions/sess"."".chdir."---".curfilepath.".vim"
+		let chdir = substitute(chdir, '\', '-', 'g')
+		let chdir = substitute(chdir, ':', '-', 'g')
+		" let curfilepath = expand("%:t")
+		" let curfilepath = substitute(curfilepath, '/', '-', 'g')
+		" let curfilepath = substitute(curfilepath, '\', '-', 'g')
+		" let curfilepath = substitute(curfilepath, ':', '-', 'g')
+
+		exec ":silent mksession! ~/.nvimsessions/sess"."".chdir."---".g:sessidentifier.".vim"
 	endif
+
 endfun
 
 
@@ -2063,6 +2081,7 @@ if !has('win32')
 	" set grepprg=/mnt/c/cygwin64/bin/grep.exe\ -nH
 else
 	"we're on windows
+	autocmd CursorHold * :call AutoSave()
 	set grepprg=C:\cygwin64\bin\grep.exe\ -nH
 	" nnoremap <leader>aa yiw :grep -riw <C-R>"<CR>
 	" set shell=C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe
