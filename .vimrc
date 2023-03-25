@@ -1286,7 +1286,7 @@ highlight ALEError ctermbg=NONE cterm=inverse
 " search / highlight settings 
 set hlsearch
 set cursorline
-set wrap
+" set wrap
 set ignorecase
 set wildignorecase
 
