@@ -1256,7 +1256,15 @@ fun! AutoSave()
 	else
 		" in windows:
 		if !exists("g:sessidentifier")
-			let g:sessidentifier = Rand()
+			if stridx(v:argv[-1], "---") != -1
+				" sess argument has been supplied with ---
+				let s:sesionname = split(v:argv[-1], "---")[-1]
+				let g:sessidentifier = substitute(s:sesionname, ".vim", '', 'g')
+			else
+				" if it's not sourced from a .vim, set it to a
+				" random number
+				let g:sessidentifier = Rand()
+			endif
 		endif
 		let chdir = getcwd()
 		let chdir = substitute(chdir, '/', '-', 'g')
@@ -1690,9 +1698,9 @@ nnoremap <leader>J J
 " open documentation
 nnoremap <leader>K K
 " case insensitive search
-nnoremap <leader>s /
+nnoremap <leader>s :let g:sessidentifier=""<left>
 " case insensitive search forward
-nnoremap <leader>S ?
+" nnoremap <leader>S ?
 " case sensitive search backward
 " nnoremap <leader>S /
 " no highlight
