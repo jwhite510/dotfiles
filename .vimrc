@@ -36,6 +36,7 @@ let g:airline_section_z = '%3p%% %3l/%L %4c c'
 Plug 'tpope/vim-fugitive'
 
 Plug 'airblade/vim-gitgutter'
+let g:gitgutter_max_signs=500
 " Plug 'lewis6991/gitsigns.nvim'
 set updatetime=100
 
@@ -123,6 +124,31 @@ call plug#end()
 
 set laststatus=2
 set encoding=utf-8
+
+function SearchFold(contextLines)
+	if getline(v:lnum)=~@/
+		return 0
+	endif
+
+	let l:contextLinesBelow = 1
+	let l:contextLinesAbove = 1
+
+	while (l:contextLinesBelow < a:contextLines)
+		if getline(v:lnum + l:contextLinesBelow)=~@/
+			return l:contextLinesBelow
+		endif
+		let l:contextLinesBelow = l:contextLinesBelow + 1
+	endwhile
+
+	while (l:contextLinesAbove < a:contextLines)
+		if getline(v:lnum - l:contextLinesAbove)=~@/
+			return l:contextLinesAbove
+		endif
+		let l:contextLinesAbove = l:contextLinesAbove + 1
+	endwhile
+
+	return a:contextLines
+endfunction
 
 function FugitiveRefresh()
 	let s:fugitive_cmd_cus = b:fugitive_cmd_cus
@@ -1618,6 +1644,7 @@ nnoremap <leader>gg yiw:call MyGrep('-rIi', "<C-R>"")<cr>
 nnoremap <leader>gs :tabe<CR>:Git<CR>
 " open file browser at folder of current file
 nnoremap <leader>cp :call OpenFileBrowser()<CR>
+nnoremap <leader>ce :!cd <c-r>=substitute(expand('%:h'), '/', '\', 'g')<cr> && explorer.exe .
 " open method in single line split
 nnoremap <leader>mo :call SplitViewMethodOpen()<cr>
 " close method
@@ -1698,7 +1725,11 @@ nnoremap <leader>J J
 " open documentation
 nnoremap <leader>K K
 " case insensitive search
-nnoremap <leader>s :let g:sessidentifier=""<left>
+nnoremap <leader>ss :let g:sessidentifier=""<left>
+nnoremap <leader>SS :echo g:sessidentifier<CR>
+
+nnoremap <leader>SB :set scrollbind!<CR>
+nnoremap <leader>sb :set scrollbind<CR>
 " case insensitive search forward
 " nnoremap <leader>S ?
 " case sensitive search backward
@@ -1772,6 +1803,7 @@ nnoremap <leader>zk :call ShrinkFoldTop('top')<cr>
 nnoremap <leader>zj :call ShrinkFoldTop('bottom')<cr>
 nnoremap <leader>z, :call ShrinkFoldBottom('top')<cr>
 nnoremap <leader>zm :call ShrinkFoldBottom('bottom')<cr>
+nnoremap <leader>zs :setlocal foldexpr=SearchFold(10) foldmethod=expr foldlevel=0 foldcolumn=2<CR>
 " easymotion
 " <Leader>q{char} to move to {char}
 " map  <Leader>ef <Plug>(easymotion-bd-f)
