@@ -1445,8 +1445,8 @@ hi        LineNr                       ctermfg=83        ctermbg=NONE cterm=NONE
 hi        VertSplit                    ctermfg=235       ctermbg=235  cterm=NONE
 " matching parenthesiis
 hi        MatchParen                   ctermfg=197       ctermbg=NONE cterm=underline
-hi        StatusLine                   ctermfg=231       ctermbg=241  cterm=bold
-hi        StatusLineNC                 ctermfg=231       ctermbg=241  cterm=NONE
+hi        StatusLine                   ctermfg=231       ctermbg=98   cterm=NONE
+hi        StatusLineNC                 ctermfg=231       ctermbg=16   cterm=NONE
 hi        Pmenu                        ctermfg=NONE      ctermbg=NONE cterm=NONE
 hi        PmenuSel                     ctermfg=NONE      ctermbg=59   cterm=NONE
 hi        IncSearch                    ctermfg=235       ctermbg=186  cterm=NONE
