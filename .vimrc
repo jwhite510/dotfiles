@@ -135,19 +135,21 @@ function SearchFold(contextLines)
 
 	while (l:contextLinesBelow < a:contextLines)
 		if getline(v:lnum + l:contextLinesBelow)=~@/
-			return l:contextLinesBelow
+			" return l:contextLinesBelow
+			break
 		endif
 		let l:contextLinesBelow = l:contextLinesBelow + 1
 	endwhile
 
 	while (l:contextLinesAbove < a:contextLines)
 		if getline(v:lnum - l:contextLinesAbove)=~@/
-			return l:contextLinesAbove
+			" return l:contextLinesAbove
+			break
 		endif
 		let l:contextLinesAbove = l:contextLinesAbove + 1
 	endwhile
 
-	return a:contextLines
+	return min([l:contextLinesAbove, l:contextLinesBelow])
 endfunction
 
 function FugitiveRefresh()
