@@ -1267,44 +1267,33 @@ fun! AutoSave()
 	if bufexists("[Command Line]")
 		return
 	endif
+	" if we are on linux, can save on the time interval
 	if !has('win32')
-		" save at a time interval
 		let time_interval = 1 " seconds
 		let autosave_l_curtime = strftime("%s")
-		if !exists("g:autosave_curtime") || (autosave_l_curtime - g:autosave_curtime) > time_interval
+		if !exists("g:autosave_curtime") || (autosave_l_curtime - g:autosave_curtime) < time_interval
 			let g:autosave_curtime = autosave_l_curtime
-			let chdir = getcwd()
-			let chdir = substitute(chdir, '/', '-', 'g')
-			if !exists("g:autosave_checked_dir")
-				let g:autosave_checked_dir = system('mkdir -p ~/.nvimsessions')
-			endif
-			let curfilepath = substitute(expand("%:p"), '/', '-', 'g')
-			exec ":silent mksession! ~/.nvimsessions/sess"."".chdir."---".curfilepath.".vim"
+			return
 		endif
-	else
-		" in windows:
-		if !exists("g:sessidentifier")
-			if stridx(v:argv[-1], "---") != -1
-				" sess argument has been supplied with ---
-				let s:sesionname = split(v:argv[-1], "---")[-1]
-				let g:sessidentifier = substitute(s:sesionname, ".vim", '', 'g')
-			else
-				" if it's not sourced from a .vim, set it to a
-				" random number
-				let g:sessidentifier = Rand()
-			endif
-		endif
-		let chdir = getcwd()
-		let chdir = substitute(chdir, '/', '-', 'g')
-		let chdir = substitute(chdir, '\', '-', 'g')
-		let chdir = substitute(chdir, ':', '-', 'g')
-		" let curfilepath = expand("%:t")
-		" let curfilepath = substitute(curfilepath, '/', '-', 'g')
-		" let curfilepath = substitute(curfilepath, '\', '-', 'g')
-		" let curfilepath = substitute(curfilepath, ':', '-', 'g')
-
-		exec ":silent mksession! ~/.nvimsessions/sess"."".chdir."---".g:sessidentifier.".vim"
 	endif
+
+	if !exists("g:sessidentifier")
+		if stridx(v:argv[-1], "---") != -1
+			" sess argument has been supplied with ---
+			let s:sesionname = split(v:argv[-1], "---")[-1]
+			let g:sessidentifier = substitute(s:sesionname, ".vim", '', 'g')
+		else
+			" if it's not sourced from a .vim, set it to a
+			" random number
+			let g:sessidentifier = Rand()
+		endif
+	endif
+	let chdir = getcwd()
+	let chdir = substitute(chdir, '/', '-', 'g')
+	let chdir = substitute(chdir, '\', '-', 'g')
+	let chdir = substitute(chdir, ':', '-', 'g')
+
+	exec ":silent mksession! ~/.nvimsessions/sess"."".chdir."---".g:sessidentifier.".vim"
 
 endfun
 
@@ -1383,6 +1372,7 @@ set showbreak=--
 " break at word not character
 set linebreak
 set display +=lastline
+set nowrap
 
 " set default latex filetype
 let g:tex_flavor = "latex"
