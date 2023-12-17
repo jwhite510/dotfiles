@@ -21,17 +21,17 @@ Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-easy-align'
 xmap ga <Plug>(EasyAlign)
 
-Plug 'vim-airline/vim-airline-themes'
-let g:airline_theme='kolor'
-
-" Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim'}
-Plug 'vim-airline/vim-airline'
-" let g:airline_section_a = ''
-" let g:airline_section_x = ''
-let g:airline_section_y = ''
-let g:airline_section_b = ''
-let g:airline_section_warning = ''
-let g:airline_section_z = '%3p%% %3l/%L %4c c'
+" Plug 'vim-airline/vim-airline-themes'
+" let g:airline_theme='kolor'
+" 
+" " Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim'}
+" Plug 'vim-airline/vim-airline'
+" " let g:airline_section_a = ''
+" " let g:airline_section_x = ''
+" let g:airline_section_y = ''
+" let g:airline_section_b = ''
+" let g:airline_section_warning = ''
+" let g:airline_section_z = '%3p%% %3l/%L %4c c'
 
 Plug 'tpope/vim-fugitive'
 
@@ -69,6 +69,7 @@ let g:NERDTreeCustomOpenArgs = {'file': {'reuse': 'currenttab', 'where': 'p', 'k
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-sleuth'
 Plug 'rickhowe/spotdiff.vim'
+" Plug 'rickhowe/diffchar.vim'
 
 
 
@@ -1235,6 +1236,8 @@ command! IgnoreBracketDiff set diffexpr=IgnoreDiff('[{}]') | diffupdate
 command! IgnoreDecimalDiff set diffexpr=IgnoreDiff('\\.\\d+') | diffupdate
 command! NormalDiff set diffexpr= | diffupdate
 
+command! CloseAllNerdTree tabdo windo if exists("b:NERDTree") | exec ":q" | endif
+
 
 command! -bar DuplicateTabpane
       \ let s:sessionoptions = &sessionoptions |
@@ -1314,6 +1317,7 @@ set cursorline
 " set wrap
 set ignorecase
 set wildignorecase
+set splitright
 
 command! Diffthis call DiffThisF()
 command! MakeTags !ctags -R .
@@ -1601,8 +1605,8 @@ nnoremap [t :tprev <CR>
 nnoremap <leader>ts :tsel <CR>
 nnoremap [Q :cfirst <CR>zv
 nnoremap ]Q :clast <CR>zv
-nnoremap <C-u> 5<C-y>
-nnoremap <C-d> 5<C-e>
+" nnoremap <C-u> 5<C-y>
+" nnoremap <C-d> 5<C-e>
 " half screen movement
 nnoremap <leader>d <C-d>
 nnoremap <leader>u <C-u>
@@ -1904,7 +1908,7 @@ cmap <A-b> <Left>
 cmap <A-w> \<
 cmap <A-e> \>
 " greedy regex nearest match
-" cmap <C-s> .\{-}
+cmap <C-s> .\{-}
 " include newlines
 cmap <C-s> \_.\{-}
 
